@@ -5,8 +5,6 @@ import './css/styles.css';
 
 const DEBOUNCE_DELAY = 300;
 
-
-
 const refs = {
     input: document.querySelector(`#search-box`),
     list: document.querySelector(`.country-list`),
@@ -27,7 +25,7 @@ function onInput(e) {
  fetchCountries(countryName)
  .then(addMarcup)
  .catch(() => 
- Notiflix.Notify.warning('Oops, there is no country with that name'))
+ Notiflix.Notify.failure('Oops, there is no country with that name'))
 };
 
 function addMarcup(data) {
