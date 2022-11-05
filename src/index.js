@@ -27,12 +27,12 @@ function onInput(e) {
  fetchCountries(countryName)
  .then(addMarcup)
  .catch(() => 
- Notiflix.Notify.failure('Oops, there is no country with that name'))
+ Notiflix.Notify.warning('Oops, there is no country with that name'))
 };
 
 function addMarcup(data) {
   if (data.length > 10) {
-    return Notiflix.Notify.warning('Too many matches found. Please enter a more specific name.')
+    return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
   };
 
   if (data.length >= 2 && data.length <= 10) {
