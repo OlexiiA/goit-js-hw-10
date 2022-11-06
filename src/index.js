@@ -13,8 +13,6 @@ const refs = {
 
 refs.input.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
-fetchCountries(`name`)
-
 function onInput(e) {
   const countryName = e.target.value.trim();
   if (!countryName) {
@@ -30,13 +28,15 @@ function onInput(e) {
 
 function addMarcup(data) {
   if (data.length > 10) {
-    return Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
-  };
+     Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+     return;
+  }; 
 
   if (data.length >= 2 && data.length <= 10) {
     refs.info.innerHTML = "";
     refs.list.innerHTML = data.map(item => `<li><img src=${item.flags.svg}
-    width = 40px, height = 25px></img><span>${item.name.official}</span></li>`).join("")
+    width = 40px, height = 25px></img><span>${item.name.official}</span></li>`).join("");
+    return;
   }
   refs.list.innerHTML = '';
   const country = data[0];
